@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS, cross_origin
 import os
 from .load_info import load_information 
 
@@ -20,10 +21,12 @@ def create_app(test_config=None):
         pass
 
     @app.route('/')
+    @cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
     def get_data():
         key = request.args.get('key')
         data = load_information(key)
         return jsonify(data)
+
 
     return app
 
