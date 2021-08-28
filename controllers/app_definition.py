@@ -1,13 +1,3 @@
-
-"""
-import configparser
-
-config = configparser.ConfigParser()
-config.read('configuration.ini')
-bitso_key = config['Bitso']['key']
-bitso_secret = config['Bitso']['secret']
-
-"""
 from flask import Flask, render_template, request, jsonify
 import os
 from .load_info import load_information 
