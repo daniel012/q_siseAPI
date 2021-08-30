@@ -20,13 +20,17 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/')
-    @cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
+    @app.route('/', methods= ['GET'])
+    @cross_origin(origin='0.0.0.0',headers=['Content- Type','Authorization'])
     def get_data():
         key = request.args.get('key')
         data = load_information(key)
         return jsonify(data)
 
+    @app.route('/repair', methods= ['POST'])
+    @cross_origin(origin='0.0.0.0',headers=['Content- Type','Authorization'])
+    def post_request():
+        return 'ok'
 
     return app
 
